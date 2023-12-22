@@ -1,12 +1,12 @@
 const {
-  regiterUserService,
+  registerUserService,
   detailUserService,
   editUserService,
 } = require('../services')
 
 const registerUserController = async (req, res) => {
   const userData = req.body
-  const user = await regiterUserService(userData)
+  const user = await registerUserService(userData)
 
   return res.status(201).json(user)
 }
