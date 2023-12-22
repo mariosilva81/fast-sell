@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS clients (
   cpf VARCHAR(11) NOT NULL UNIQUE,
   zip VARCHAR(8),
   street VARCHAR(255),
-  number INTEGER CHECK (numero > 0),
+  number INTEGER CHECK (number > 0),
   neighborhood VARCHAR(50),
   city VARCHAR(50),
   state VARCHAR(50)

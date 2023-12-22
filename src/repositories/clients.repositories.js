@@ -1,4 +1,4 @@
-const knex = require('../utils')
+const { knex } = require('../utils')
 
 const registerClientRepository = async (clientData) => {
   const client = await knex('clients').insert(clientData).returning('*')

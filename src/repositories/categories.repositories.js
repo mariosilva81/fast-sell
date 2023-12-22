@@ -1,4 +1,4 @@
-const knex = require('../utils')
+const { knex } = require('../utils')
 
 const listCategoryRepository = async () => {
   const categories = await knex('categories')

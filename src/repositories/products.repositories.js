@@ -1,4 +1,4 @@
-const knex = require('../utils')
+const { knex } = require('../utils')
 
 const registerProductRepository = async (
   description,

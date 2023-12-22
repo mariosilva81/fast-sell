@@ -1,5 +1,5 @@
 const { AppError } = require('../utils')
-const knex = require('../utils')
+const { knex } = require('../utils')
 const bcrypt = require('bcrypt')
 
 const validateLoginDataMiddleware = async (req, _res, next) => {

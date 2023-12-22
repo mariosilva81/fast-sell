@@ -1,4 +1,4 @@
-const knex = require('../utils')
+const { knex } = require('../utils')
 
 const userByEmailRepository = async (email) => {
   const user = await knex('users').where({ email })

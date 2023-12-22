@@ -1,4 +1,4 @@
-const knex = require('../utils')
+const { knex } = require('../utils')
 
 const registerOrderRepository = async (client_id, observation, total_value) => {
   const order = await knex('orders')
