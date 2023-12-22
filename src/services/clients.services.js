@@ -6,22 +6,9 @@ const {
 } = require('../repositories')
 
 const registerClientService = async (clientData) => {
-  const { name, email, cpf, zip, street, number, neighborhood, city, state } =
-    clientData
-
-  const registeredClient = await registerClientRepository({
-    name,
-    email,
-    cpf,
-    zip,
-    street,
-    number,
-    neighborhood,
-    city,
-    state,
+  const client = await registerClientRepository({
+    ...clientData
   })
-
-  const client = { id: registeredClient[0].id, name, email, cpf }
 
   return client
 }
