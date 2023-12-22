@@ -28,7 +28,7 @@ const sendEmail = async (clientName, order_id, clientEmail, productsData) => {
     await transporter.sendMail({
       from: `${process.env.EMAIL_NAME} <${process.env.EMAIL_FROM}>`,
       to: `${clientName} <${clientEmail}>`,
-      subject: `Pedido efetuado com sucesso!`,
+      subject: `Order placed successfully!`,
       html,
     })
   } catch (error) {
