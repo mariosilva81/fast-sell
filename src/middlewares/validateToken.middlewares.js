@@ -5,7 +5,7 @@ const validateTokenMiddleware = (req, res, next) => {
   const isAuthenticated = req.headers.authorization
 
   if (!isAuthenticated) {
-    throw new AppError('To access this route, login is required.', 403)
+    throw new AppError('To access this route, it is necessary to provide a token.', 403)
   }
 
   const token = isAuthenticated.split(' ')[1]
