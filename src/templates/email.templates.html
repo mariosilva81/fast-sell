@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirmação de Pedido</title>
+  </head>
+  <body>
+    <div
+      style="
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      "
+    >
+      <h1>Confirmação de Pedido</h1>
+      <p>Olá, <%= clientName %>!</p>
+      <p>Seu pedido com o ID <%= order_id %> foi realizado com sucesso.</p>
+
+      <p>
+        Total do Pedido: R$ <%=productsData.reduce((total, product) => total +
+        ((product.product_quantity * product.product_value)/100),
+        0).toFixed(2) %>
+      </p>
+
+      <p>
+        Agradecemos por escolher nossa loja. Se você tiver alguma
+        dúvida ou precisar de assistência, não hesite em entrar em contato
+        conosco pelos nossos canais de atendimento informados no site.
+      </p>
+
+      <p>Atenciosamente,<br />Fast Sell</p>
+    </div>
+  </body>
+</html>

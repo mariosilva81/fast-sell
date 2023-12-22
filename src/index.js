@@ -3,25 +3,32 @@ const express = require('express')
 require('express-async-errors')
 const cors = require('cors')
 
-const { manipuladorDeErro } = require('./erros')
-const { categoriaRota, usuarioRota, loginRota, clienteRota, produtoRota, pedidoRota} = require('./rotas/index.js')
+const { errorHandler } = require('./utils')
+const {
+  categoryRoute,
+  clientRoute,
+  loginRoute,
+  orderRoute,
+  productRoute,
+  userRoute,
+} = require('./routes')
 
 const app = express()
 
 app.use(express.json())
 app.use(cors())
 
-app.use('/categoria', categoriaRota)
-app.use('/usuario', usuarioRota)
-app.use('/login', loginRota)
-app.use('/cliente', clienteRota)
-app.use('/produto', produtoRota)
-app.use('/pedido', pedidoRota)
+app.use('/category', categoryRoute)
+app.use('/user', userRoute)
+app.use('/login', loginRoute)
+app.use('/client', clientRoute)
+app.use('/product', productRoute)
+app.use('/order', orderRoute)
 
-app.use(manipuladorDeErro)
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => {
-  console.log(`Servidor iniciado na porta: ${PORT}`)
+  console.log(`Server started on port: ${PORT}`)
 })

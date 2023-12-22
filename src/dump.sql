@@ -1,68 +1,73 @@
-DROP TABLE IF EXISTS usuarios;
-DROP TABLE IF EXISTS categorias;
-DROP TABLE IF EXISTS produtos;
-DROP TABLE IF EXISTS clientes;
-DROP TABLE IF EXISTS pedidos;
-DROP TABLE IF EXISTS pedido_produtos;
+DROP TABLE IF EXISTS users;
 
-CREATE TABLE IF NOT EXISTS usuarios (
+DROP TABLE IF EXISTS categories;
+
+DROP TABLE IF EXISTS products;
+
+DROP TABLE IF EXISTS clients;
+
+DROP TABLE IF EXISTS orders;
+
+DROP TABLE IF EXISTS order_products;
+
+CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
-  nome VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
-  senha VARCHAR(255) NOT NULL
+  password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS categorias (
+CREATE TABLE IF NOT EXISTS categories (
   id SERIAL PRIMARY KEY,
-  descricao VARCHAR(255)
+  description VARCHAR(255)
 );
 
-INSERT INTO categorias (descricao)
-VALUES 
-  ('Informática'),
-  ('Celulares'),
-  ('Beleza e Perfumaria'),
-  ('Mercado'),
-  ('Livros e Papelaria'),
-  ('Brinquedos'),
-  ('Moda'),
-  ('Bebê'),
-  ('Games')
-;
+INSERT INTO
+  categories (description)
+VALUES
+  ('Electronics'),
+  ('Mobile Phones'),
+  ('Beauty and Fragrance'),
+  ('Grocery'),
+  ('Books and Stationery'),
+  ('Toys'),
+  ('Fashion'),
+  ('Baby'),
+  ('Games');
 
-CREATE TABLE IF NOT EXISTS produtos (
+CREATE TABLE IF NOT EXISTS products (
   id SERIAL PRIMARY KEY,
-  descricao VARCHAR(255) NOT NULL,
-  quantidade_estoque INTEGER NOT NULL CHECK (quantidade_estoque > 0),
-  valor INTEGER NOT NULL CHECK (valor > 0),
-  produto_imagem VARCHAR(255), 
-  categoria_id INTEGER REFERENCES categorias (id)
+  description VARCHAR(255) NOT NULL,
+  stock_quantity INTEGER NOT NULL CHECK (stock_quantity > 0),
+  value INTEGER NOT NULL CHECK (value > 0),
+  product_image VARCHAR(255),
+  category_id INTEGER REFERENCES categories (id)
 );
 
-CREATE TABLE IF NOT EXISTS clientes (
+CREATE TABLE IF NOT EXISTS clients (
   id SERIAL PRIMARY KEY,
-  nome VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   cpf VARCHAR(11) NOT NULL UNIQUE,
-  cep VARCHAR(8),
-  rua VARCHAR(255),
-  numero INTEGER CHECK (numero > 0),
-  bairro VARCHAR(50),
-  cidade VARCHAR(50),
-  estado VARCHAR(50)
+  zip VARCHAR(8),
+  street VARCHAR(255),
+  number INTEGER CHECK (numero > 0),
+  neighborhood VARCHAR(50),
+  city VARCHAR(50),
+  state VARCHAR(50)
 );
 
-CREATE TABLE IF NOT EXISTS pedidos (
+CREATE TABLE IF NOT EXISTS orders (
   id SERIAL PRIMARY KEY,
-  cliente_id INTEGER NOT NULL,
-  observacao VARCHAR(255),
-  valor_total INTEGER NOT NULL CHECK (valor_total > 0)
+  client_id INTEGER NOT NULL,
+  observation VARCHAR(255),
+  total_value INTEGER NOT NULL CHECK (total_value > 0)
 );
 
-CREATE TABLE IF NOT EXISTS pedido_produtos (
+CREATE TABLE IF NOT EXISTS order_products (
   id SERIAL PRIMARY KEY,
-  pedido_id INTEGER NOT NULL REFERENCES pedidos (id),
-  produto_id INTEGER NOT NULL REFERENCES produtos (id),
-  quantidade_produto INTEGER NOT NULL,
-  valor_produto INTEGER NOT NULL CHECK (valor_produto > 0)
+  order_id INTEGER NOT NULL REFERENCES orders (id),
+  product_id INTEGER NOT NULL REFERENCES products (id),
+  product_quantity INTEGER NOT NULL,
+  product_value INTEGER NOT NULL CHECK (product_value > 0)
 );
