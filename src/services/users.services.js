@@ -12,9 +12,9 @@ const registerUserService = async (userData) => {
 
   const user = await registerUserRepository(name, email, encryptedPassword)
 
-  delete user.password
+  const userWithoutPassword = { id: user[0].id, name, email }
 
-  return user[0]
+  return userWithoutPassword
 }
 
 const detailUserService = async (id) => {
