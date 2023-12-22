@@ -30,6 +30,7 @@ clientRoute.get(
   validateIdMiddleware,
   detailClientController
 )
+
 clientRoute.put(
   '/:id',
   validateTokenMiddleware,
