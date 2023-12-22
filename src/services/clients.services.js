@@ -29,11 +29,11 @@ const listClientService = async () => {
 const editClientService = async (clientData, client) => {
   const { name, email, cpf, zip, street, number, neighborhood, city, state } =
     clientData
-  const clientId = Number(client)
+  const id = Number(client)
 
   const editedClient = await editClientRepository(
     { name, email, cpf, zip, street, number, neighborhood, city, state },
-    { clientId }
+    { id }
   )
 
   return editedClient
