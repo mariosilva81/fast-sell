@@ -18,7 +18,7 @@ const {
 productRoute.post(
   '/',
   validateTokenMiddleware,
-  multer.single('file'),
+  multer.single('product_image'),
   validateBodyMiddleware(productSchema),
   validateIdMiddleware,
   registerProductController
@@ -36,7 +36,7 @@ productRoute.get(
 productRoute.put(
   '/:id',
   validateTokenMiddleware,
-  multer.single('file'),
+  multer.single('product_image'),
   validateBodyMiddleware(productSchema),
   validateIdMiddleware,
   editProductController

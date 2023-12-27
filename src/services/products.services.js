@@ -32,7 +32,7 @@ const registerProductService = async (productData, file) => {
   const productWithImage = await editProductRepository(
     Number(registeredProduct[0].id),
     {
-      product_image: registerImage.path,
+      product_image: registerImage.url,
     }
   )
 
@@ -42,7 +42,6 @@ const registerProductService = async (productData, file) => {
     stock_quantity: productWithImage[0].stock_quantity,
     value: productWithImage[0].value,
     product_image: productWithImage[0].product_image,
-    url_imagem: registerImage.url,
     category_id: productWithImage[0].category_id,
   }
 
@@ -82,17 +81,20 @@ const editProductService = async (productData, productId, file) => {
   const registerImage = async () => {
     if (file) {
       const path = `${productId}_${description.replaceAll(' ', '_')}`
-
-      return await sendImage(path, file.buffer, file.mimetype)
+      const imageUrl = await sendImage(path, file.buffer, file.mimetype)
+      return imageUrl
     }
+    return null
   }
+
+  const productImage = await registerImage()
 
   const product = await editProductRepository(Number(productId), {
     description,
     stock_quantity,
     value,
     category_id,
-    product_image: registerImage.path,
+    product_image: productImage.url,
   })
 
   return product[0]
