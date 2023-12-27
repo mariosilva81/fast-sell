@@ -3,9 +3,13 @@
 
 ## Descrição
 
-Seja bem-vindo à documentação da API criada para otimizar a administração de um e-commerce. Essa API proporciona uma ampla gama de funcionalidades, facilitando aos usuários o cadastro de clientes, produtos e pedidos.
+A API desenvolvida foi projetada para otimizar a gestão de um e-commerce, oferecendo uma variedade de funcionalidades que simplificam o processo de gerenciamento de usuários, clientes, produtos e pedidos. Ao criar um produto utilizando esta API, uma funcionalidade adicional é a possibilidade de obter automaticamente uma URL associada à imagem do produto, proporcionando uma maneira eficiente de vincular e exibir visualmente os produtos no site.
 
-Trabalho para conclusão do Curso de Back-end na Cubos Academy.
+Além disso, no momento da criação de um pedido, a API oferece a capacidade de automatizar a comunicação com os clientes. Um e-mail de confirmação é automaticamente gerado e enviado para o cliente, proporcionando a tranquilidade e a certeza de que o pedido foi recebido com sucesso. Essa funcionalidade não apenas agiliza o processo de confirmação, mas também melhora a experiência do cliente ao fornecer informações sobre a transação.
+
+Essas características adicionais contribuem significativamente para a eficiência operacional e aprimoram a experiência global tanto para os administradores do e-commerce quanto para os clientes finais, tornando a utilização da API uma escolha vantajosa para a gestão do e-commerce.
+
+Trabalho de conclusão do Curso de Back-end na Cubos Academy.
 
 ## Autores
 
