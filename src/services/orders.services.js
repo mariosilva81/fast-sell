@@ -64,9 +64,11 @@ const registerOrderService = async (orderData) => {
 
   const { name: nameClient, email: emailClient } = foundClient
 
-  await sendEmail(nameClient, orderId, emailClient, productsData)
+  sendEmail(nameClient, orderId, emailClient, productsData)
 
-  return order[0]
+  return {
+    message: 'Order successfully placed!',
+  }
 }
 
 const listOrderService = async (client_id) => {

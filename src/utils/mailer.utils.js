@@ -19,7 +19,7 @@ const transporter = nodemailer.createTransport({
 })
 
 const sendEmail = async (clientName, order_id, clientEmail, productsData) => {
-  const html = await compileHTML('./src/templates/email.html', {
+  const html = await compileHTML('./src/templates/email.templates.html', {
     clientName,
     order_id,
     productsData,
@@ -28,7 +28,7 @@ const sendEmail = async (clientName, order_id, clientEmail, productsData) => {
     await transporter.sendMail({
       from: `${process.env.EMAIL_NAME} <${process.env.EMAIL_FROM}>`,
       to: `${clientName} <${clientEmail}>`,
-      subject: `Order placed successfully!`,
+      subject: 'Pedido realizado com sucesso!',
       html,
     })
   } catch (error) {
